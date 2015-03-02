@@ -76,12 +76,12 @@ var mainState = {
     },
     showGoals: function(){
         this.pipes.exists = false;
-        this.goals.exists = false;
         jump= 0;
-        this.labelGoal = game.add.text(180, 150, "0", { font:"60px Arial", fill:"#ffffff"});
-        this.labelGoal.text = score;
+        game.time.events.remove(this.timer);
+        this.labelGoal = game.add.text(game.world.width/3, game.world.height/2, "0", { font:"20px Arial", fill:"yellow"});
+        this.labelGoal.text = "Your score : " + score;
         // thêm nhãn Restart game
-        text = game.add.text(150, 250, "Restart", { font:"30px Arial", fill:"#ffffff"});
+        text = game.add.text(150, 280, "Restart", { font:"30px Arial", fill:"orange"});
         text.inputEnabled = true;
         text.events.onInputDown.add(this.restartGame,this);
 
@@ -124,9 +124,9 @@ var mainState = {
         var startPoint = this.getStartPoint(-200,-400);
 
         // thêm các chi tiết dựa theo điểm bắt đầu
-        this.addOnePipe(400, startPoint);
-        this.addOneHole(400, startPoint + 520);
-        this.addOnePipe(400, startPoint + 630);
+        this.addOnePipe(350, startPoint);
+        this.addOneHole(350, startPoint + 520);
+        this.addOnePipe(350, startPoint + 630);
         console.log(startPoint);
         console.log("-----");
     },
