@@ -17,6 +17,7 @@ var mainState = {
         game.load.image("bird", "assets/bird.png");
         game.load.image("background","assets/background.png");
         game.load.image("pipe", "assets/pipe-1.png");
+        game.load.image("ground", "assets/ground.png");
     },
 
     create: function() {
@@ -54,7 +55,8 @@ var mainState = {
         //đặt nút space là nút chơi chính
         var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.jump, this);
-        // this.game.input.onDown(restartGame, this);
+
+        this.ground = game.add.sprite(0, 490, 'ground');
     },
 
     update: function() {
@@ -75,8 +77,8 @@ var mainState = {
     showGoals: function(){
         this.pipes.exists = false;
         this.goals.exists = false;
-        this.bird.body.immovable = true;
-        this.labelGoal = game.add.text(game.center.width/2, gama.center.height/2, "0", { font:"60px Arial", fill:"#ffffff"});
+        jump= 0;
+        this.labelGoal = game.add.text(180, 150, "0", { font:"60px Arial", fill:"#ffffff"});
         this.labelGoal.text = score;
         // thêm nhãn Restart game
         text = game.add.text(150, 250, "Restart", { font:"30px Arial", fill:"#ffffff"});
